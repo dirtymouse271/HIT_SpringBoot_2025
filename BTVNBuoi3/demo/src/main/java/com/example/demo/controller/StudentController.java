@@ -19,26 +19,32 @@ public class StudentController {
     @GetMapping("/select")
     public String getAllStudent(Model model){
         List<Student> list = studentService.getAllStudent();
-        model.addAttribute("student", list);
-        return "student";
+        model.addAttribute("students", list);
+        return "list";
+    }
+
+    @GetMapping("/form")
+    public String showForm(Model model) {
+        model.addAttribute("student", new Student());
+        return "form";
     }
 
     @PostMapping("/create")
     public String createStudent(@ModelAttribute Student student){
         studentService.createStudent(student);
-        return "redirect:/student";
+        return "redirect:/student/select";
     }
 
     @PostMapping("/update")
     public String updateStudent(@ModelAttribute Student student){
         studentService.updateStudent(student);
-        return "redirect:/student";
+        return "redirect:/student/select";
     }
 
     @PostMapping("/delete/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
-        return "redirect:/student";
+        return "redirect:/student/select";
     }
 
 }

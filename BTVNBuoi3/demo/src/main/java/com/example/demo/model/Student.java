@@ -21,6 +21,6 @@ public class Student {
     String email;
     @Column(name = "phone_number", length = 15)
     String phone;
-    @Column(name = "home_address", length = 255, columnDefinition = "TEXT")
+    @Column(name = "home_address", columnDefinition = "TEXT")
     String address;
 }
